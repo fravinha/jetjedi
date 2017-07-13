@@ -1,0 +1,346 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Jedi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Le styles -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="assets/css/docs.css" rel="stylesheet">
+    <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="assets/js/html5shiv.js"></script>
+    <![endif]-->
+    <!-- Le fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="assets/ico/favicon.png">
+</head>
+<body data-spy="scroll" data-target=".bs-docs-sidebar">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div class="nav-collapse collapse">
+                    <ul class="nav">
+                        <li class="disabled">
+                            <a class="page-scroll">JetJedi</a>
+                        </li>
+                        <li class="">
+                            <a href="./index.html">Home</a>
+                        </li>
+                        <li class="active">
+                            <a href="./jedi.html">Jedi</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row-fluid">
+            <div class="span12">
+                <h1 href="#" data-toggle="modal" data-target="#addJedi" style="outline:none;">
+                    <button onclick="limpar()" type="button" class="btn btn-default">+ Jedis</button>
+                </h1>
+            </div>
+        </div>
+
+        <div class="row-fluid">
+            <div class="span12">
+                <table class="table table-striped" id="tabela">
+                    <thead>
+                        <tr>
+                            <th width="30%">Nome</th>
+                            <th width="20%">Planeta</th>
+                            <th width="20%">Status</th>
+                            <th width="20%">Mestre</th>
+                            <th width="10%"></th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="deleteJedi" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="false">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body" style="width:100%; position:relative;">
+                        <h3>Excluir Jedi</h3>
+                        <div class="form-group">
+                            <div class="row-fluid">
+                                <div class="span9">
+                                    <label for="usr">Nome:</label>
+                                    <input disabled autofocus placeholder="Insira o nome do Jedi" type="text" class="form-control" id="f_nameD">
+                                    <input disabled type="hidden" class="form-control" id="f_idD">
+                                </div>
+                            </div>
+                            <div class="row-fluid">
+                                <label for="usr">Planeta:</label>
+                                <input disabled placeholder="Insira o nome do planeta de origem do Jedi" type="text" class="form-control" id="f_planetaD">
+                            </div>
+                            <div class="row-fluid">
+                                <label for="usr">Mestre:</label>
+                                <input disabled placeholder="Insira o nome do mestre Jedi" type="text" class="form-control" id="f_mestreD">
+                            </div>
+                            <div class="row-fluid">
+                                <label for="sel1">Status:</label>
+                                <select disabled class="form-control" id="f_statusD">
+                                    <option value="">Selecione</option>
+                                    <option value="3">Mestre</option>
+                                    <option value="4">Padawan</option>
+                                    <option value="5">Jedi</option>
+                                    <option value="6">Sith</option>
+                                    <option value="7">Lord Sith</option>
+                                </select>
+                            </div>
+                            <div class="row-fluid">
+                                <div class="span12">
+                                    <div class="span2">
+                                        <h1 href="#" data-toggle="modal" data-target=".bs-docs-sidebar" style="outline:none;">
+                                            <button onclick="excluir()" type="button" class="btn btn-danger">Excluir</button>
+                                        </h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="visualizarJedi" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="false">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body" style="width:100%; position:relative;">
+                        <h3>Visualizar Jedi</h3>
+                        <div class="form-group">
+                            <div class="row-fluid">
+                                <div class="span9">
+                                    <label for="usr">Nome:</label>
+                                    <input disabled type="text" class="form-control" id="f_nameV">
+                                    <input disabled type="hidden" class="form-control" id="f_idV">
+                                </div>
+                            </div>
+                            <div class="row-fluid">
+                                <label for="usr">Planeta:</label>
+                                <input disabled type="text" class="form-control" id="f_planetaV">
+                            </div>
+                            <div class="row-fluid">
+                                <label for="usr">Mestre:</label>
+                                <input disabled type="text" class="form-control" id="f_mestreV">
+                            </div>
+                            <div class="row-fluid">
+                                <label for="sel1">Status:</label>
+                                <select disabled class="form-control" id="f_statusV">
+                                    <option value="">Selecione</option>
+                                    <option value="3">Mestre</option>
+                                    <option value="4">Padawan</option>
+                                    <option value="5">Jedi</option>
+                                    <option value="6">Sith</option>
+                                    <option value="7">Lord Sith</option>
+                                </select>
+                            </div>
+                            <div class="row-fluid">
+                                <div class="span12">
+                                    <div class="span3">
+                                        <h1 href="#" data-toggle="modal" data-target=".bs-docs-sidebar" style="outline:none;">
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+                                        </h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div id="addJedi" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body" style="width:100%; position:relative;">
+                        <h3>Cadastro de Jedis</h3>
+                        <div class="form-group">
+                            <div class="row-fluid">
+                                <div class="span9">
+                                    <label for="usr">Nome:</label>
+                                    <input autofocus placeholder="Insira o nome do Jedi" type="text" class="form-control" id="f_name">
+                                    <input disabled type="hidden" class="form-control" id="f_id">
+                                </div>
+                            </div>
+                            <div class="row-fluid">
+                                <label for="usr">Planeta:</label>
+                                <input placeholder="Insira o nome do planeta de origem do Jedi" type="text" class="form-control" id="f_planeta">
+                            </div>
+                            <div class="row-fluid">
+                                <label for="usr">Mestre:</label>
+                                <input placeholder="Insira o nome do mestre Jedi" type="text" class="form-control" id="f_mestre">
+                            </div>
+                            <div class="row-fluid">
+                                <label for="sel1">Status:</label>
+                                <select class="form-control" id="f_status">
+                                    <option value="">Selecione</option>
+                                    <option value="3">Mestre</option>
+                                    <option value="4">Padawan</option>
+                                    <option value="5">Jedi</option>
+                                    <option value="6">Sith</option>
+                                    <option value="7">Lord Sith</option>
+                                </select>
+                            </div>
+                            <div class="row-fluid">
+                                <div class="span12">
+                                    <div class="span2">
+                                        <h1 href="#" data-toggle="modal" data-target=".bs-docs-sidebar" style="outline:none;">
+                                            <button onclick="adicionar()" type="button" class="btn btn-default">Salvar</button>
+                                        </h1>
+                                    </div>
+                                    <div class="span3">
+                                        <h1 href="#" data-toggle="modal" data-target=".bs-docs-sidebar" style="outline:none;">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                        </h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+        <script src="assets/js/jquery-3.2.1.min.js"></script>
+        <script src="assets/js/bootstrap-transition.js"></script>
+        <script src="assets/js/bootstrap-alert.js"></script>
+        <script src="assets/js/bootstrap-modal.js"></script>
+        <script src="assets/js/bootstrap-dropdown.js"></script>
+        <script src="assets/js/bootstrap-scrollspy.js"></script>
+        <script src="assets/js/bootstrap-tab.js"></script>
+        <script src="assets/js/bootstrap-tooltip.js"></script>
+        <script src="assets/js/bootstrap-popover.js"></script>
+        <script src="assets/js/bootstrap-button.js"></script>
+        <script src="assets/js/bootstrap-collapse.js"></script>
+
+        <script src="assets/js/base.js"></script>
+
+
+        <script id="removeElem">
+            var dto = {};
+            dto.username = "flaviastocloska@hotmail.com";
+            dto.password = "mudar@123";
+            dto.grant_type = "password";
+            dto.appName = "jetjedi";
+
+            base.UI.Ajax(base.Page + "/token", dto, "POST", function (resp) {
+                base.UI.SaveCookie(resp.access_token);
+                base.Token = resp.access_token;
+                $("#Token").val();
+                $("#removeElem").remove();
+            }, function () {
+                //404 Tela
+                //window.location.href = "";
+                $("#removeElem").remove();
+            }, true);
+        </script>
+
+        <script>
+            $(document).ready(function () {
+                base.Jedi.GetAll(function (lista) {
+                    for (var i = 0; i < lista.data.length; i++) {
+                        var nomeStatus;
+                        base.Status.Get(lista.data[i].status, function (status) {
+                            nomeStatus = status.status_name;
+                        });
+
+                        $("#tabela").append("<tr><td>" + lista.data[i].name + "</td> <td>" + lista.data[i].planet + "</td> <td>" + nomeStatus + "</td> <td>" + lista.data[i].master + "</td> <td>" + '<div class="dropdown"><button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Opções<span class="caret"></span></button><ul class="dropdown-menu"><li><a href="#" onclick="setaDadosModal(' + lista.data[i].id + ', ' + true + ')" data-toggle="modal" data-target="#addJedi" style="outline:none;">Editar</a></li><li><a href="#" onclick="setaDadosModal(' + lista.data[i].id + ', ' + false + ')" data-toggle="modal" data-target="#deleteJedi" style="outline:none;">Excluir</a></li> <li><a href="#" onclick="setaDadosModal(' + lista.data[i].id + ', ' + false + ')" data-toggle="modal" data-target="#visualizarJedi" style="outline:none;">Visualizar</a></li></ul></div>' + "</td> </tr>");
+                    }
+
+                })
+            });
+
+            function setaDadosModal(valor, valida) {
+                base.Jedi.Get(valor, function (listaVal) {
+                    if (valida) {
+                        document.getElementById('f_id').value = valor;
+                        document.getElementById('f_name').value = listaVal.name;
+                        document.getElementById('f_planeta').value = listaVal.planet;
+                        document.getElementById('f_mestre').value = listaVal.master;
+                        document.getElementById('f_status').value = listaVal.status;
+                    } else {
+                        document.getElementById('f_idD').value = listaVal.id;
+                        document.getElementById('f_nameD').value = listaVal.name;
+                        document.getElementById('f_planetaD').value = listaVal.planet;
+                        document.getElementById('f_mestreD').value = listaVal.master;
+                        document.getElementById('f_statusD').value = listaVal.status;
+
+
+                        document.getElementById('f_idV').value = listaVal.id;
+                        document.getElementById('f_nameV').value = listaVal.name;
+                        document.getElementById('f_planetaV').value = listaVal.planet;
+                        document.getElementById('f_mestreV').value = listaVal.master;
+                        document.getElementById('f_statusV').value = listaVal.status;
+                    }
+                })
+            }
+
+            function limpar() {
+                document.getElementById('f_id').value = "";
+                document.getElementById('f_name').value = "";
+                document.getElementById('f_planeta').value = "";
+                document.getElementById('f_mestre').value = "";
+                document.getElementById('f_status').value = "";
+            }
+
+            function adicionar() {
+                //status, master, name, planet
+                if (document.getElementById('f_id').value == null || document.getElementById('f_id').value == '') {
+                    var name = document.getElementById('f_name').value;
+                    var planet = document.getElementById('f_planeta').value;
+                    var mestre = document.getElementById('f_mestre').value;
+                    var status = document.getElementById('f_status').value;
+
+                    base.Jedi.Create(status, mestre, name, planet, function () {
+                        location.reload();
+                    });
+                } else {
+                    var id = document.getElementById('f_id').value;
+                    var name = document.getElementById('f_name').value;
+                    var planet = document.getElementById('f_planeta').value;
+                    var mestre = document.getElementById('f_mestre').value;
+                    var status = document.getElementById('f_status').value;
+
+                    base.Jedi.Update(id, status, mestre, name, planet);
+
+                    location.reload();
+                }
+            }
+
+            function excluir() {
+                var id = document.getElementById('f_idD').value;
+
+                base.Jedi.Delete(id);
+                location.reload();
+            }
+
+        </script>
+
+</body>
+</html>
